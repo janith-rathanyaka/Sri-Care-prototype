@@ -64,6 +64,15 @@
         "tsConfigPath": "apps/customer_support/tsconfig.app.json"
       }
     },
+    "database": {
+      "type": "library",
+      "root": "libs/database",
+      "entryFile": "index",
+      "sourceRoot": "libs/database/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/database/tsconfig.lib.json"
+      }
+    },
     "shared": {
       "type": "library",
       "root": "libs/shared",
@@ -73,22 +82,13 @@
         "tsConfigPath": "libs/shared/tsconfig.lib.json"
       }
     },
-    "auth": {
+    "core": {
       "type": "library",
-      "root": "libs/auth",
+      "root": "libs/core",
       "entryFile": "index",
-      "sourceRoot": "libs/auth/src",
+      "sourceRoot": "libs/core/src",
       "compilerOptions": {
-        "tsConfigPath": "libs/auth/tsconfig.lib.json"
-      }
-    },
-    "database": {
-      "type": "library",
-      "root": "libs/database",
-      "entryFile": "index",
-      "sourceRoot": "libs/database/src",
-      "compilerOptions": {
-        "tsConfigPath": "libs/database/tsconfig.lib.json"
+        "tsConfigPath": "libs/core/tsconfig.lib.json"
       }
     }
   }
