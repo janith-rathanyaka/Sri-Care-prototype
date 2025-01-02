@@ -6,6 +6,7 @@ import { VerifyUserDto } from '@app/shared/dtos/verify-user.dto';
 import { User } from '@app/shared/interface/user.interface';
 import { UserDocument } from '@app/shared/schemas/user.schema';
 import { Inject, Injectable, Logger } from '@nestjs/common';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AccessManagementService {
@@ -14,10 +15,6 @@ export class AccessManagementService {
     @Inject('UserRepository')
     private readonly userRepository: MongoRepository<UserDocument>
   ) {}
-
-  getHello(): string {
-    return 'Hello World!';
-  }
 
   async createUser(createUserDto: CreateUserDto): Promise<UserDocument> {
     return this.userRepository.create(createUserDto) as unknown as UserDocument;

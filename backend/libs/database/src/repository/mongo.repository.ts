@@ -12,11 +12,11 @@ export class MongoRepository<T extends Document> extends AbstractRepository<T> {
     return this.model.find().exec();
   }
 
-  async findById(query: Partial<T>): Promise<T | null> {
+  async findById(id: string): Promise<T | null> {
     return this.model.findById(id).exec();
   }
 
-  async findOne(query: Partial<T>): Promise<T | null> {
+  async findOne(query: any): Promise<T | null> {
     return this.model.findOne(query).exec();
   }
 

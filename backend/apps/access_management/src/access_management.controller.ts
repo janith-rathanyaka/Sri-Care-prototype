@@ -10,14 +10,9 @@ export class AccessManagementController {
     private readonly verifyUserService: VerifyUserService
     ) {}
 
-  @Get()
-  getHello(): string {
-    return this.accessManagementService.getHello();
-  }
-  
   @Post('verify-user')
   verifyUser(@Body() verifyUser: VerifyUserDto) {
-      return this.verifyUserService.verifyUser(verifyUser);
+      return this.verifyUserService.verifyUser(verifyUser); 
   }
 
   @Post('register')
