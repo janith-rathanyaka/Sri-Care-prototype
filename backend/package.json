@@ -19,7 +19,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./apps/backend/test/jest-e2e.json",
     "build-all:dev": "concurrently \"nest build access_management\" \"nest build billing\" \"nest build notifications\" \"nest build service_management\"",
-    "all-start:dev": "concurrently \"nest start access_management --watch\" \"nest start billing --watch\" \"nest start notifications --watch\" \"nest start service_management --watch\""
+    "all-start:dev": "concurrently  \"nest start billing --watch\" \"nest start notifications --watch\" \"nest start service_management --watch\""
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -28,6 +28,7 @@
     "@nestjs/jwt": "^10.2.0",
     "@nestjs/mongoose": "^10.1.0",
     "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/swagger": "^8.1.1",
     "@types/bcrypt": "^5.0.2",
     "bcrypt": "^5.1.1",
     "class-transformer": "^0.5.1",
@@ -83,7 +84,9 @@
     "moduleNameMapper": {
       "^@app/database(|/.*)$": "<rootDir>/libs/database/src/$1",
       "^@app/shared(|/.*)$": "<rootDir>/libs/shared/src/$1",
-      "^@app/core(|/.*)$": "<rootDir>/libs/core/src/$1"
+      "^@app/core(|/.*)$": "<rootDir>/libs/core/src/$1",
+      "^@app/otp-generate(|/.*)$": "<rootDir>/libs/otp-generate/src/$1",
+      "^@app/sms(|/.*)$": "<rootDir>/libs/sms/src/$1"
     }
   }
 }

@@ -90,6 +90,24 @@
       "compilerOptions": {
         "tsConfigPath": "libs/core/tsconfig.lib.json"
       }
+    },
+    "otp-generate": {
+      "type": "library",
+      "root": "libs/otp-generate",
+      "entryFile": "index",
+      "sourceRoot": "libs/otp-generate/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/otp-generate/tsconfig.lib.json"
+      }
+    },
+    "sms": {
+      "type": "library",
+      "root": "libs/sms",
+      "entryFile": "index",
+      "sourceRoot": "libs/sms/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/sms/tsconfig.lib.json"
+      }
     }
   }
 }

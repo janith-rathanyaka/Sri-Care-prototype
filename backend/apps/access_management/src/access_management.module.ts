@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
-import { UserDocument, UserSchema } from '@app/shared/schemas/user.schema';
-import { CustomerDocument, CustomerSchema } from '@app/shared/schemas/customer.schema';
+import { User, UserSchema } from '@app/shared/schemas/user.schema';
+// import { CustomerDocument, CustomerSchema } from '@app/shared/schemas/customer.schema';
 import { MongoRepository } from '@app/database/repository/mongo.repository';
 import { DatabaseModule } from '@app/database';
 import { getModelToken } from '@nestjs/mongoose';
@@ -24,14 +24,14 @@ import { VerifyUserService } from './verify_user.service';
   providers: [
     {
       provide: 'UserRepository',
-      useFactory: (model: Model<UserDocument>) => new MongoRepository(model),
+      useFactory: (model: Model<User>) => new MongoRepository(model),
       inject: [getModelToken('User')],
     },
-    {
-      provide: 'CustomerRepository',
-      useFactory: (model: Model<CustomerDocument>) => new MongoRepository(model),
-      inject: [getModelToken('Customer')],
-    },
+    // {
+    //   provide: 'CustomerRepository',
+    //   useFactory: (model: Model<CustomerDocument>) => new MongoRepository(model),
+    //   inject: [getModelToken('Customer')],
+    // },
     AccessManagementService,
     VerifyUserService,
   ],

@@ -35,6 +35,18 @@
       ],
       "@app/core/*": [
         "libs/core/src/*"
+      ],
+      "@app/otp-generate": [
+        "libs/otp-generate/src"
+      ],
+      "@app/otp-generate/*": [
+        "libs/otp-generate/src/*"
+      ],
+      "@app/sms": [
+        "libs/sms/src"
+      ],
+      "@app/sms/*": [
+        "libs/sms/src/*"
       ]
     }
   }

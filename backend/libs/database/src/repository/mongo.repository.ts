@@ -8,8 +8,8 @@ export class MongoRepository<T extends Document> extends AbstractRepository<T> {
     super();
   }
 
-  async findAll(): Promise<T[]> {
-    return this.model.find().exec();
+  async findAll(filter: Record<string, any> = {}): Promise<T[]> {
+    return this.model.find(filter).exec();
   }
 
   async findById(id: string): Promise<T | null> {
