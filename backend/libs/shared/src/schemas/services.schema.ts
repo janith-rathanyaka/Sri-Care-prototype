@@ -17,6 +17,9 @@ export class Services extends Document {
 
   @Prop({ required: true })
   cost: number;
+  
+  @Prop({ required: false })
+  ValidTimePeriod: string;
 
   @Prop({ required: true, enum: ['pre-pay', 'post-pay'], default: 'post-pay' })
   paymentType: string;
