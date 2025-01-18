@@ -8,7 +8,7 @@ export class VAS extends Document {
   userId: string;
 
   @Prop({ required: true })
-  serviceName: string;
+  serviceId: string;
 
   @Prop({ required: true, enum: ['Active', 'Inactive'], default: 'Inactive' })
   status: string;

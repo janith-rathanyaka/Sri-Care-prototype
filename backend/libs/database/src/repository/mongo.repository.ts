@@ -29,8 +29,9 @@ export class MongoRepository<T extends Document> extends AbstractRepository<T> {
     return this.model.findByIdAndUpdate(id, data, { new: true }).exec();
   }
 
-  async delete(id: string): Promise<boolean> {
-    const result = await this.model.findByIdAndDelete(id).exec();
+  async delete(id: any): Promise<boolean> {
+    const result = await this.model.deleteOne(id).exec();
     return !!result;
   }
+  
 }

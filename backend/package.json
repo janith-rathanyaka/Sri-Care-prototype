@@ -19,7 +19,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./apps/backend/test/jest-e2e.json",
     "build-all:dev": "concurrently \"nest build access_management\" \"nest build billing\" \"nest build notifications\" \"nest build service_management\"",
-    "all-start:dev": "concurrently  \"nest start billing --watch\" \"nest start notifications --watch\" \"nest start service_management --watch\""
+    "all-start:dev": "concurrently \"nest start chat --watch\"  \"nest start admin-portal --watch\" \"nest start billing --watch\" \"nest start notifications --watch\" \"nest start service_management --watch\""
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -28,7 +28,9 @@
     "@nestjs/jwt": "^10.2.0",
     "@nestjs/mongoose": "^10.1.0",
     "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/platform-socket.io": "^10.4.15",
     "@nestjs/swagger": "^8.1.1",
+    "@nestjs/websockets": "^10.4.15",
     "@types/bcrypt": "^5.0.2",
     "bcrypt": "^5.1.1",
     "class-transformer": "^0.5.1",
@@ -36,7 +38,8 @@
     "concurrently": "^9.1.1",
     "mongoose": "^8.9.2",
     "reflect-metadata": "^0.2.0",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "socket.io": "^4.8.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",

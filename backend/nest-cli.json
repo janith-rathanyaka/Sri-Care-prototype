@@ -108,6 +108,24 @@
       "compilerOptions": {
         "tsConfigPath": "libs/sms/tsconfig.lib.json"
       }
+    },
+    "chat": {
+      "type": "application",
+      "root": "apps/chat",
+      "entryFile": "main",
+      "sourceRoot": "apps/chat/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/chat/tsconfig.app.json"
+      }
+    },
+    "admin-portal": {
+      "type": "application",
+      "root": "apps/admin-portal",
+      "entryFile": "main",
+      "sourceRoot": "apps/admin-portal/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/admin-portal/tsconfig.app.json"
+      }
     }
   }
 }
