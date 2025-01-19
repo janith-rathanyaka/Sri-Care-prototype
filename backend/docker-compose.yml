@@ -9,6 +9,7 @@ services:
     restart: always
     ports:
       - 3000:3000
+
   billing:
     container_name: billing
     build:
@@ -18,15 +19,7 @@ services:
     restart: always
     ports:
       - 3001:3001
-  notifications:
-    container_name: notifications
-    build:
-      context: .
-      args:
-        - APP=notifications
-    restart: always
-    ports:
-      - 3002:3002
+
   service_management:
     container_name: service_management
     build:
@@ -36,3 +29,16 @@ services:
     restart: always
     ports:
       - 3003:3003
+
+  redis:
+    container_name: redis
+    image: redis:latest
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:
+    driver: local

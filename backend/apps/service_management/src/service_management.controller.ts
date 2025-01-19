@@ -1,5 +1,15 @@
-import { Body, Controller, Delete, Get, Param, Patch } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  UseGuards,
+  Request,
+} from '@nestjs/common';
 import { ServiceManagementService } from './service_management.service';
+import { AuthGuard } from '@app/core/jwt-config/auth-guards/auth.guard';
 
 @Controller('service-management')
 export class ServiceManagementController {
@@ -7,21 +17,24 @@ export class ServiceManagementController {
     private readonly serviceManagementService: ServiceManagementService,
   ) {}
 
+  @UseGuards(AuthGuard)
   @Get('serviceById/:id')
-  ActiveService(@Param('id') id: string): Promise<any> {
-    const userId = '1000';
+  ActiveService(@Param('id') id: string, @Request() req: any): Promise<any> {
+    const userId = req.user.userId;
     return this.serviceManagementService.findActiveService(id, userId);
   }
 
+  @UseGuards(AuthGuard)
   @Get('userSubServices')
-  userSubServices(): Promise<any> {
-    const userId = '1000';
+  userSubServices(@Request() req: any): Promise<any> {
+    const userId = req.user.userId;
     return this.serviceManagementService.findUserSubServices(userId);
   }
 
+  @UseGuards(AuthGuard)
   @Delete('deleteService/:id')
-  deleteService(@Param('id') id: string): Promise<any> {
-    const userId = '1000';
+  deleteService(@Param('id') id: string, @Request() req: any): Promise<any> {
+    const userId = req.user.userId;
     return this.serviceManagementService.deleteService(id, userId);
   }
 }

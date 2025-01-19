@@ -4,7 +4,7 @@ import { Types } from 'mongoose';
 
 @Schema()
 export class Bill extends Document {
-  @Prop({ type: Types.ObjectId, ref: 'User', required: true })
+  @Prop({ required: true })
   userId: string;
 
   @Prop({ required: true })
@@ -18,17 +18,12 @@ export class Bill extends Document {
 
   @Prop({ required: true, enum: ['Paid', 'Unpaid'], default: 'Unpaid' })
   status: string;
+  
+  @Prop({ required: false })
+  vasId?: string;
 
-  @Prop({
-    type: [
-      {
-        description: { type: String, required: true },
-        amount: { type: Number, required: true },
-      },
-    ],
-    default: [],
-  })
-  items: { description: string; amount: number }[];
+  @Prop({ required: false })
+  transactionId: string;
 }
 
 export const BillSchema = SchemaFactory.createForClass(Bill);

@@ -1,6 +1,15 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
+// Define the nested object as a separate class
+class Verification {
+  @Prop({ default: false })
+  mobileVerified: boolean;
+
+  @Prop({ default: false })
+  emailVerified: boolean;
+}
+
 @Schema()
 export class User extends Document {
   @Prop({ required: true })
@@ -21,14 +30,8 @@ export class User extends Document {
   @Prop({ required: true, enum: ['existing', 'new'] })
   registrationType: string;
 
-  @Prop({ default: { mobileVerified: false, emailVerified: false } })
-  verification: {
-    mobileVerified: boolean;
-    emailVerified: boolean;
-  };
-
-  @Prop({ type: [String], default: [] })
-  services: string[];
+  @Prop({ type: Verification, default: { mobileVerified: false, emailVerified: false } })
+  verification: Verification;
 
   @Prop({ default: 'active' })
   status: string;

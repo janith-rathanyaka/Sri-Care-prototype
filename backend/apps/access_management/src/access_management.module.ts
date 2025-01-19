@@ -2,22 +2,33 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { User, UserSchema } from '@app/shared/schemas/user.schema';
-// import { CustomerDocument, CustomerSchema } from '@app/shared/schemas/customer.schema';
 import { MongoRepository } from '@app/database/repository/mongo.repository';
 import { DatabaseModule } from '@app/database';
 import { getModelToken } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { AccessManagementController } from './access_management.controller';
 import { AccessManagementService } from './access_management.service';
-import { VerifyUserService } from './verify_user.service';
+import { ProvisioningSystemModule } from '@app/provisioning_system';
+import { OtpGenerateModule } from '@app/otp-generate';
+import { NotificationsModule } from '@app/notifications';
+import { VAS, VASSchema } from '@app/shared/schemas/vas.schema';
+import { CoreModule } from '@app/core';
+import configuration from '@app/core/configuration';
 
 @Module({
   imports: [
+    CoreModule,
+    NotificationsModule,
+    OtpGenerateModule,
+    ProvisioningSystemModule,
     DatabaseModule,
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [configuration],
+    }),
     MongooseModule.forFeature([
       { name: 'User', schema: UserSchema },
-      { name: 'Customer', schema: CustomerSchema },
+      { name: 'VAS', schema: VASSchema },
     ]),
   ],
   controllers: [AccessManagementController],
@@ -27,14 +38,13 @@ import { VerifyUserService } from './verify_user.service';
       useFactory: (model: Model<User>) => new MongoRepository(model),
       inject: [getModelToken('User')],
     },
-    // {
-    //   provide: 'CustomerRepository',
-    //   useFactory: (model: Model<CustomerDocument>) => new MongoRepository(model),
-    //   inject: [getModelToken('Customer')],
-    // },
+    {
+      provide: 'VASRepository',
+      useFactory: (model: Model<VAS>) => new MongoRepository(model),
+      inject: [getModelToken('VAS')],
+    },
     AccessManagementService,
-    VerifyUserService,
   ],
-  exports: ['UserRepository'],
+  exports: ['UserRepository',  'VASRepository'],
 })
 export class AccessManagementModule {}

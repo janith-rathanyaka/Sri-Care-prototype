@@ -38,7 +38,7 @@ export class AdminPortalService {
   }
 
   deleteService(id: string) {
-    return this.servicesRepository.delete({ _id: Object(id) });
+    return this.servicesRepository.delete(id);
   }
 
   getAllServices() {

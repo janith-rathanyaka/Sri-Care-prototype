@@ -1,8 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-@Schema()
-export class OTP extends Document {
+@Schema({ timestamps: true })
+export class Otp extends Document {
   @Prop({ required: true })
   mobile: string;
 
@@ -10,10 +10,10 @@ export class OTP extends Document {
   otp: string;
 
   @Prop({ required: true })
-  expiry: Date;
+  expiresAt: number;
 
   @Prop({ default: false })
-  verified: boolean;
+  isVerified: boolean;
 }
 
-export const OTPSchema = SchemaFactory.createForClass(OTP);
+export const OtpSchema = SchemaFactory.createForClass(Otp);

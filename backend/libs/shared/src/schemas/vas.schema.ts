@@ -14,10 +14,16 @@ export class VAS extends Document {
   status: string;
 
   @Prop()
-  activationDate: Date;
+  activationDate: number;
 
   @Prop()
-  deactivationDate: Date;
+  deactivationDate: number;
+
+  @Prop({ required: true, enum: ['pre-pay', 'post-pay'], default: 'post-pay' })
+  paymentType: string;
+
+  @Prop({ required: true })
+  cost: number;
 }
 
 export const VASSchema = SchemaFactory.createForClass(VAS);

@@ -18,33 +18,45 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./apps/backend/test/jest-e2e.json",
-    "build-all:dev": "concurrently \"nest build access_management\" \"nest build billing\" \"nest build notifications\" \"nest build service_management\"",
-    "all-start:dev": "concurrently \"nest start chat --watch\"  \"nest start admin-portal --watch\" \"nest start billing --watch\" \"nest start notifications --watch\" \"nest start service_management --watch\""
+    "build-all:dev": "concurrently \"nest build access_management\" \"nest build billing\" \"nest build service_management\"",
+    "all-start:dev": "concurrently \"nest start access_management --watch\" \"nest start chat --watch\"  \"nest start admin-portal --watch\" \"nest start billing --watch\" \"nest start service_management --watch\""
   },
   "dependencies": {
+    "@nestjs/axios": "^4.0.0",
+    "@nestjs/bull": "^11.0.0",
     "@nestjs/common": "^10.0.0",
     "@nestjs/config": "^3.3.0",
     "@nestjs/core": "^10.0.0",
     "@nestjs/jwt": "^10.2.0",
+    "@nestjs/microservices": "^11.0.1",
     "@nestjs/mongoose": "^10.1.0",
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/platform-socket.io": "^10.4.15",
+    "@nestjs/schedule": "^5.0.0",
     "@nestjs/swagger": "^8.1.1",
     "@nestjs/websockets": "^10.4.15",
     "@types/bcrypt": "^5.0.2",
+    "amqplib": "^0.10.5",
     "bcrypt": "^5.1.1",
+    "bull": "^4.16.5",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
     "concurrently": "^9.1.1",
+    "crypto": "^1.0.1",
+    "firebase-admin": "^13.0.2",
     "mongoose": "^8.9.2",
+    "nodemailer": "^6.9.16",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
-    "socket.io": "^4.8.1"
+    "sequelize": "^6.37.5",
+    "socket.io": "^4.8.1",
+    "web-push": "^3.6.7"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
     "@nestjs/schematics": "^10.0.0",
     "@nestjs/testing": "^10.0.0",
+    "@types/bull": "^4.10.4",
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.2",
     "@types/node": "^20.3.1",
@@ -89,7 +101,10 @@
       "^@app/shared(|/.*)$": "<rootDir>/libs/shared/src/$1",
       "^@app/core(|/.*)$": "<rootDir>/libs/core/src/$1",
       "^@app/otp-generate(|/.*)$": "<rootDir>/libs/otp-generate/src/$1",
-      "^@app/sms(|/.*)$": "<rootDir>/libs/sms/src/$1"
+      "^@app/sms(|/.*)$": "<rootDir>/libs/sms/src/$1",
+      "^@app/notifications(|/.*)$": "<rootDir>/libs/notifications/src/$1",
+      "^@app/payment_gateway(|/.*)$": "<rootDir>/libs/payment_gateway/src/$1",
+      "^@app/provisioning_system(|/.*)$": "<rootDir>/libs/provisioning_system/src/$1"
     }
   }
 }

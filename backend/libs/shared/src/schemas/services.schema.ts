@@ -28,10 +28,10 @@ export class Services extends Document {
   status: string;
 
   @Prop()
-  activationDate: Date;
+  activationDate: number;
 
   @Prop()
-  deactivationDate: Date;
+  deactivationDate: number;
 }
 
 export const ServicesSchema = SchemaFactory.createForClass(Services);

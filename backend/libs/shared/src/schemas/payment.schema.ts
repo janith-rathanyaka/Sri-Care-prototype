@@ -20,7 +20,7 @@ export class Payment extends Document {
   status: string;
 
   @Prop()
-  paymentDate: Date;
+  paymentDate:number;
 
   @Prop()
   transactionId: string;

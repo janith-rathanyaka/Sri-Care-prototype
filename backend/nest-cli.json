@@ -46,15 +46,6 @@
         "tsConfigPath": "apps/billing/tsconfig.app.json"
       }
     },
-    "notifications": {
-      "type": "application",
-      "root": "apps/notifications",
-      "entryFile": "main",
-      "sourceRoot": "apps/notifications/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/notifications/tsconfig.app.json"
-      }
-    },
     "customer_support": {
       "type": "application",
       "root": "apps/customer_support",
@@ -125,6 +116,33 @@
       "sourceRoot": "apps/admin-portal/src",
       "compilerOptions": {
         "tsConfigPath": "apps/admin-portal/tsconfig.app.json"
+      }
+    },
+    "notifications": {
+      "type": "library",
+      "root": "libs/notifications",
+      "entryFile": "index",
+      "sourceRoot": "libs/notifications/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/notifications/tsconfig.lib.json"
+      }
+    },
+    "payment_gateway": {
+      "type": "library",
+      "root": "libs/payment_gateway",
+      "entryFile": "index",
+      "sourceRoot": "libs/payment_gateway/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/payment_gateway/tsconfig.lib.json"
+      }
+    },
+    "provisioning_system": {
+      "type": "library",
+      "root": "libs/provisioning_system",
+      "entryFile": "index",
+      "sourceRoot": "libs/provisioning_system/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/provisioning_system/tsconfig.lib.json"
       }
     }
   }

@@ -47,6 +47,24 @@
       ],
       "@app/sms/*": [
         "libs/sms/src/*"
+      ],
+      "@app/notifications": [
+        "libs/notifications/src"
+      ],
+      "@app/notifications/*": [
+        "libs/notifications/src/*"
+      ],
+      "@app/payment_gateway": [
+        "libs/payment_gateway/src"
+      ],
+      "@app/payment_gateway/*": [
+        "libs/payment_gateway/src/*"
+      ],
+      "@app/provisioning_system": [
+        "libs/provisioning_system/src"
+      ],
+      "@app/provisioning_system/*": [
+        "libs/provisioning_system/src/*"
       ]
     }
   }

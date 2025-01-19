@@ -11,11 +11,7 @@ export class CreateUserDto {
   @IsNotEmpty()
   name: string;
   
-  @ApiProperty({
-    description: 'Email address of the user',
-    example: 'john.doe@example.com',
-    required: false, // Make it optional in Swagger if marked as optional
-  })
+  @IsOptional()
   @IsEmail()
   email?: string;
 
@@ -23,9 +19,9 @@ export class CreateUserDto {
     description: 'Mobile number of the user',
     example: '1234567890',
   })
-  @IsNumber()
+  @IsString()
   @IsNotEmpty()
-  mobile: number;
+  mobile: string;
 
   @ApiProperty({
     description: 'Customer ID associated with the user',
